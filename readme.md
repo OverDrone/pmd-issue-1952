@@ -7,6 +7,6 @@ Expected result: step 4 has same error reported as in step 2
 Actual result: no pmd errors reported during step 4
 
 Also:
-5. edit MainComponent.java: remove/comment @Value and import org.springframework.beans.factory.annotation.Value
-6. gradle clean pmdMain (using latest 6.17.0) - "unused field" error reported.
+1. edit MainComponent.java: remove/comment @Value and import org.springframework.beans.factory.annotation.Value
+2. gradle clean pmdMain (using latest 6.17.0) - "unused field" error reported.
 this proves that 6.17 pmd config is correct and rule is actually checked
