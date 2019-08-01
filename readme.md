@@ -1,3 +1,5 @@
+project example for https://github.com/pmd/pmd/issues/1952
+
 Steps to reproduce:
 1. gradle wrapper
 2. gradle clean pmdMain (using pmd 6.0.0) - "unused field" error reported
