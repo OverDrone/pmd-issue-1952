@@ -1,0 +1,39 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'pmd'
+apply plugin: 'eclipse-wtp'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springVersion = '5.1.8.RELEASE'
+    fileEncoding = 'UTF-8'
+}
+
+dependencies {
+    compile "org.springframework:spring-webmvc:${springVersion}"
+}
+
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    options.encoding = fileEncoding
+    //options.deprecation = true
+    options.compilerArgs += ["-Werror", "-Xlint:unchecked"]
+}
+
+pmd {
+    //following configuration produces error: unused variable var
+    ruleSetFiles = files("${project.rootDir}/config/pmd/ruleset.6.0.xml")
+    toolVersion = '6.0.0'
+
+    //following configuration doesn't produce this error, although it should
+    //ruleSetFiles = files("${project.rootDir}/config/pmd/ruleset.6.17.xml")
+    //toolVersion = '6.17.0'
+
+    ruleSets = []
+}
